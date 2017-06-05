@@ -5,15 +5,17 @@ const express = require('express')
 const router = express.Router()
 const request = require("request");
 
-router.get('/:name', function (req, res, next) {
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+});
+
+router.get('/:name', function(req,res,next){
     let theName = req.params.name
-    let theBreed = req.query.breed
-    res.send({'string': theName, 'length': theBreed })
+    res.send({'string' : theName, 'length' : theName.length})
 })
 
 router.post('/', function (req, res, next) {
-    //console.log(req.body.test1)
-    res.json(req.body)
+    res.send({'string':req.body, 'length':req.body.length})
 })
 
 module.exports = router
