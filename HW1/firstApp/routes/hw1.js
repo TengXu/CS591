@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:name', function(req,res,next){
     let theName = req.params.name
-    res.send({'string' : theName, 'length' : theName.length}
+    res.send({'string' : theName, 'length' : theName.length})
 });
 
 // router.post('/', function (req, res, next) {
