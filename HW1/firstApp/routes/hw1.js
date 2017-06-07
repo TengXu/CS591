@@ -17,10 +17,15 @@ router.get('/:name', function(req,res,next){
 //     res.send({'string':req.body.test1, 'length':req.body.test1.length})
 // });
 
-
 router.post('/', function (req,res,next) {
-    console.log(req.body)
-    res.send({"string": req.body.test1, "length" : req.body.test1.length});
+    let theName = req.body.name;
+    let theLength = theName.length
+    let response = {
+        name: theName,
+        length: theLength
+    }
+    res.json(response)
 });
+
 
 module.exports = router;
