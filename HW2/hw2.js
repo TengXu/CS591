@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/test')
 
@@ -17,9 +16,9 @@ const stringSchema = new Schema({
 
 const string = mongoose.model('string', stringSchema)
 
-let findByName = function (checkName) {
+let findByName = function (output) {
     return new Promise(function (resolve, reject) {
-        string.find({string: checkName}, function (err, results) {
+        string.find({string: output}, function (err, results) {
             if (results.length > 0) {
                 resolve({found: results})
             }
@@ -71,8 +70,8 @@ router.post('/',function(req, res, next){
             aString.save(function(err){
                 if(err) {res.send(err)}
                 else{res.send(aString)}
-            })
-        })}
+        })
+    })}
 })
 
 router.delete('/:name',function(req, res, next){
@@ -81,12 +80,12 @@ router.delete('/:name',function(req, res, next){
         .then(function(status){
             string.remove( {string : input}, function(err, result){
                 if(err){throw err}
-                else{res.json({'message':'Delete Sucess'});}
-            } )
+                else{res.json({message:'Delete Sucess'});}
+            })
         })
         .catch(function(status){
-            res.send({'message':'String not found'})
+            res.json({message:'String not found'})
         })
-})
+	})
 
 module.exports = router;
