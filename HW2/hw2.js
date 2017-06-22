@@ -37,7 +37,7 @@ router.get('/', function(req, res, next){
 
 router.get('/:name', function(req, res, next){
     let input = req.params.name
-    let input_len = s.length
+    let input_len = input.length
     findByName(input)
         .then(function(status){
             res.json(status)
