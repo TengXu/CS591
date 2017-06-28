@@ -52,18 +52,18 @@ angular.module('cs411', ['ngRoute', 'ngCookies'])
         // shownewsbyLoc function take a user name as input, search the user name in twitter and get a location form twitter,
         // then use the location to search for news via googleNews, and return the news.
         $scope.shownewsbyLoc = function(user){
-            $scope.userLoc = ""
+            $scope.userLoc = ""                 // Clear the data from last search
             $scope.userTime = ""
             $scope.newsbyLoc = ""
             $scope.newsbyTime = ""
             $http.get('http://localhost:3000/tw/'+ user.name)
                 .then(function (response) {
-                    $scope.userLoc = response.data.statuses[0].user.location
+                    $scope.userLoc = response.data.statuses[0].user.location  // Get the user's location
                     if($scope.userLoc == ""){
                         $scope.userLoc = "US"
                     }
         }).then(function(){
-            $http.get('http://localhost:3000/news/'+ $scope.userLoc)
+            $http.get('http://localhost:3000/news/'+ $scope.userLoc) // Search for news by location
                 .then(function (responses) {
                     $scope.newsbyLoc = responses.data})
         })
@@ -72,15 +72,15 @@ angular.module('cs411', ['ngRoute', 'ngCookies'])
         // shownewsbyTime function take a user name as input, search the user name in twitter and get a time form twitter,
         // then use the time to search for news via googleNews, and return the news.
         $scope.shownewsbyTime = function(user){
-            $scope.userLoc = ""
+            $scope.userLoc = ""                 // Clear the data from last search
             $scope.userTime = ""
             $scope.newsbyLoc = ""
             $scope.newsbyTime = ""
             $http.get('http://localhost:3000/tw/'+ user.name)
                 .then(function (response) {
-                    $scope.userTime = response.data.statuses[0].created_at.slice(0,10)
+                    $scope.userTime = response.data.statuses[0].created_at.slice(0,10)  // Slice the date string to get the appropriate date
                 }).then(function(){
-                $http.get('http://localhost:3000/news/'+ $scope.userTime)
+                $http.get('http://localhost:3000/news/'+ $scope.userTime)  // Search for news by time
                     .then(function (responses) {
                         $scope.newsbyTime = responses.data})
             })
