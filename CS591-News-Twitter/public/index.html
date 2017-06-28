@@ -26,8 +26,8 @@
 
 </head>
 
-<body ng-app="cs411">
-<div ng-controller="cs411ctrl" ng-init="initApp()">
+<body ng-app="cs591P">
+<div ng-controller="cs591Pctrl" ng-init="initApp()">
     <img src="/images/master-logo.gif"><span class="largeText">  Department of Computer Science</span>
     <h2>{{h2message}} {{name}}</h2>
     <p> Input a Twitter ID, and search for the latest news based on the location and time of its latest tweet.</p>
@@ -37,17 +37,6 @@
                 <label class="sr-only" for="formName">Twitter ID</label>
                 <input type="text" class="form-control" id="formName" placeholder="Enter Twitter ID" ng-model="name" required>
             </div>
-            <!--Only need Twitter ID-->
-            <!--<div class="form-group">-->
-                <!--<label class="sr-only" for="formUID">Email address</label>-->
-                <!--<input type="text" class="form-control" id="formUID" placeholder="Enter UID" ng-model="UID" required>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label class="sr-only" for="formDepartment">Password</label>-->
-                <!--<input type="text" class="form-control" id="formDepartment" placeholder="Enter Department"-->
-                       <!--ng-model="department" required>-->
-                <!--<input type="hidden" value="{{user._id}}">-->
-            <!--</div>-->
             <button type="submit" class="btn btn-primary" ng-disabled="inputForm.$invalid" ng-click="createUser()">
                 {{buttonMessage}}
             </button>

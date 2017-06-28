@@ -1,4 +1,4 @@
-angular.module('cs411', ['ngRoute', 'ngCookies'])
+angular.module('cs591P', ['ngRoute', 'ngCookies'])
     .directive('nameDisplay', function () {
         return {
             scope: true,
@@ -6,7 +6,7 @@ angular.module('cs411', ['ngRoute', 'ngCookies'])
             template: "<b>This can be anything {{name}}</b>"
         }
     })
-    .controller('cs411ctrl', function ($scope, $http, $cookies) {
+    .controller('cs591Pctrl', function ($scope, $http, $cookies) {
 
         //CREATE (POST)
         $scope.createUser = function () {
@@ -103,8 +103,6 @@ angular.module('cs411', ['ngRoute', 'ngCookies'])
                 url: 'http://localhost:3000/api/db/' + userID,
                 data: {
                     name: $scope.name,
-                    UID: $scope.UID,
-                    department: $scope.department,
                     _id: userID
                 }
             }

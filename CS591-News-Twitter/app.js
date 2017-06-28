@@ -1,6 +1,5 @@
 /*
-Updating the app to use Twitter OAUTH 1.0a authentication. Nothing to change here but one
-mount point; everything will be done in authTwitter, which is mounted on /auth
+Updating the app to use Twitter OAUTH 1.0a authentication.
  */
 const express = require('express')
 const path = require('path')
@@ -11,12 +10,8 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 
-//flash is used with passport to pop up messages
 const flash = require('connect-flash')
-//and flash requires session. We'll also want passport-session.
 
-
-//var routes = require('./routes/index');
 const api = require('./routes/api')
 const auth = require('./routes/authTwitter')
 const twitter = require('./routes/tw')  /** Create routes for twitter api and googleNews api **/
@@ -29,9 +24,6 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
